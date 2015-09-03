@@ -9,7 +9,8 @@ ENV DEBIAN_FRONTEND noninteractive
 
 VOLUME /usr/lib/unifi/data
 VOLUME /var/log/supervisor
-RUN  	touch /usr/lib/unifi/data/.unifidatadir
+RUN 	mkdir -p /var/log/supervisor /usr/lib/unifi/data && \
+  	touch /usr/lib/unifi/data/.unifidatadir
 
 RUN apt-get update -q -y
 RUN apt-get install -q -y supervisor apt-utils lsb-release curl wget rsync util-linux
