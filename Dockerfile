@@ -2,7 +2,7 @@
 #
 # the unifi contoller is used to admin ubunquty wifi access points
 #
-FROM debian:wheezy
+FROM ubuntu:latest
 #MAINTAINER stuart nixon dotcomstu@gmail.com
 
 ENV DEBIAN_FRONTEND noninteractive
