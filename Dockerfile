@@ -2,13 +2,11 @@
 #
 # the unifi contoller is used to admin ubunquty wifi access points
 #
-FROM ubuntu:latest
+FROM debian:wheezy
 #MAINTAINER stuart nixon dotcomstu@gmail.com
 
 ENV DEBIAN_FRONTEND noninteractive
 
-VOLUME /usr/lib/unifi/data
-VOLUME /var/log/supervisor
 RUN 	mkdir -p /var/log/supervisor /usr/lib/unifi/data && \
   	touch /usr/lib/unifi/data/.unifidatadir
 
@@ -24,6 +22,7 @@ RUN echo "deb http://www.ubnt.com/downloads/unifi/debian stable ubiquiti" > /etc
 ADD ./supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 VOLUME /usr/lib/unifi/data
+VOLUME /var/log/supervisor
 EXPOSE  8443 8080 27117
 WORKDIR /usr/lib/unifi
 CMD ["/usr/bin/supervisord"]
