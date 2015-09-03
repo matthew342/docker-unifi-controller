@@ -2,13 +2,14 @@
 #
 # the unifi contoller is used to admin ubunquty wifi access points
 #
-FROM rednut/ubuntu:latest
-MAINTAINER stuart nixon dotcomstu@gmail.com
+FROM debian:wheezy
+#MAINTAINER stuart nixon dotcomstu@gmail.com
 
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN 	mkdir -p /var/log/supervisor /usr/lib/unifi/data && \
-  	touch /usr/lib/unifi/data/.unifidatadir
+VOLUME /usr/lib/unifi/data
+VOLUME /var/log/supervisor
+RUN  	touch /usr/lib/unifi/data/.unifidatadir
 
 RUN apt-get update -q -y
 RUN apt-get install -q -y supervisor apt-utils lsb-release curl wget rsync util-linux
